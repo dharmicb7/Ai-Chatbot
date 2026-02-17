@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["**/*.*", "!.next", "!.turbo"],
+      "outputs": ["dist", ".next/**", "!.next/cache/**", "public/registry/**"],
+      "env": ["OPENAI_*", "ASSISTANT_UI_*", "ENTELLIGENCE_API_*"]
+    },
+    "lint": {},
+    "deploy": {
+      "dependsOn": ["build", "lint"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
